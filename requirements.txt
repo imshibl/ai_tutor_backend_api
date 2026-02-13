@@ -1,0 +1,4 @@
+pymongo
+fastapi[standard]
+google-genai
+
