@@ -6,4 +6,5 @@ passlib[argon2]
 pydantic
 email-validator
 python-dotenv
-
+pypdf
+python-multipart
