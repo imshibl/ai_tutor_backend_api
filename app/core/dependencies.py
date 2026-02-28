@@ -2,7 +2,7 @@ from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from bson import ObjectId
 
-import db
+from core.db import db, users_collection
 from core.security import decode_token
 
 security = HTTPBearer()
@@ -29,7 +29,7 @@ async def get_current_user(
         raise HTTPException(status_code=401, detail="email missing")
 
     # User not found in database
-    existing_user = await db.users_collection.find_one({"email": email})
+    existing_user = await users_collection.find_one({"email": email})
     if not existing_user:
         raise HTTPException(status_code=400, detail="Not found in database")
     
